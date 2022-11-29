@@ -1,0 +1,5 @@
+venv\Scripts\activate
+
+django-admin startproject automax
+
+python manage.py runserver 8080
