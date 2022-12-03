@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="author" content="Michelle Lauer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="{% static 'bootstrap/css/bootstrap.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    {% block 'body'%} {% endblock %} {% block 'footer'%}
+    <footer class="mt-auto text-white-50 bg-dark text-muted">
+      <div class="container">
+        <p class="float-end mb-1">
+          Copyright © {% now 'Y' %} <a href="" class="text-white">AutoMax</a> by
+          <a href="https://preneure.com" class="text-white">Preneure.com</a>
+        </p>
+        <p class="mb-1">AutoMax - Best Place To Buy & Sell Cars</p>
+      </div>
+    </footer>
+    {% endblock %}
+  </body>
+</html>

@@ -3,3 +3,9 @@ venv\Scripts\activate
 django-admin startproject automax
 
 python manage.py runserver 8080
+
+python manage.py startapp users
+
+python manage.py makemigrations
+
+python manage.py migrate
