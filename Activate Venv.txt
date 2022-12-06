@@ -1,3 +1,6 @@
+https://github.com/preneure/automax_django_web_app
+
+
 venv\Scripts\activate
 
 django-admin startproject automax
