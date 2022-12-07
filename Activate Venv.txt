@@ -16,3 +16,5 @@ python manage.py migrate
 pip install django-localflavor
 
 pip install django-crispy-forms
+
+pip install django-filter
