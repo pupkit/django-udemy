@@ -69,7 +69,7 @@
   $("#like_{{listing.id}}").click(function () {
     $.ajax({
       type: "POST",
-      url: "{% comment %}{% url 'like_listing' id=listing.id %}{% endcomment %}",
+      url: "{% url 'like_listing' id=listing.id %}",
       data: { csrfmiddlewaretoken: "{{csrf_token}}" },
       dataType: "json",
       success: function (r) {

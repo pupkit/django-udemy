@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.utils.decorators import method_decorator
 from django.views import View
-from main.models import Listing
+from main.models import Listing, LikedListing
 
 # Create your views here.
 
@@ -68,8 +68,10 @@ class ProfileView(View):
         user_form = UserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)
         location_form = LocationForm(instance=request.user.profile.location)
+        user_liked_listings = LikedListing.objects.filter(
+            profile=request.user.profile).all()
 
-        return render(request, 'views/profile.html', {'user_form': user_form, 'profile_form': profile_form, 'location_form': location_form, 'user_listings': user_listings})
+        return render(request, 'views/profile.html', {'user_form': user_form, 'profile_form': profile_form, 'location_form': location_form, 'user_listings': user_listings, 'user_liked_listings': user_liked_listings})
 
     def post(self, request):
         user_listings = Listing.objects.filter(seller=request.user.profile)
@@ -79,6 +81,8 @@ class ProfileView(View):
             request.POST, request.FILES, instance=request.user.profile)
         location_form = LocationForm(
             request.POST, instance=request.user.profile.location)
+        user_liked_listings = LikedListing.objects.filter(
+            profile=request.user.profile).all()
 
         if user_form.is_valid() and profile_form.is_valid() and location_form.is_valid():
             user_form.save()
@@ -88,4 +92,4 @@ class ProfileView(View):
             return redirect('profile')
         else:
             messages.error(request, 'Error updating profile!')
-        return render(request, 'views/profile.html', {'user_form': user_form, 'profile_form': profile_form, 'location_form': location_form, 'user_listings': user_listings})
+        return render(request, 'views/profile.html', {'user_form': user_form, 'profile_form': profile_form, 'location_form': location_form, 'user_listings': user_listings, 'user_liked_listings': user_liked_listings})
